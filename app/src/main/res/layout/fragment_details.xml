@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:transitionName="rootView2">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cal.countries.viewmodel.DetailsViewModel" />
+    </data>
+<androidx.core.widget.NestedScrollView
+    android:background="@color/dark_purple"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        tools:context=".view.fragments.HomeFragment">
+        <!--weather-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/weather_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/white"
+                android:padding="2dp">
+
+                <ImageView
+                    android:id="@+id/weather_iv"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/refresh_small" />
+
+                <TextView
+                    android:id="@+id/weather_tv"
+                    style="@style/lightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Weather"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="120px"
+                    app:layout_constraintStart_toEndOf="@+id/weather_iv"
+                    app:layout_constraintTop_toTopOf="@+id/weather_iv"
+                    tools:text="Heavy Rain" />
+
+
+                <TextView
+                    android:id="@+id/city_tv"
+                    style="@style/lightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="city"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/weather_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/weather_tv"
+                    tools:text="Mumbai" />
+
+                <TextView
+                    android:id="@+id/temp_tv"
+                    style="@style/lightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30px"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="__°C"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/weather_iv"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="29°C" />
+
+                <TextView
+                    android:id="@+id/aqi_tv"
+                    style="@style/lightText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="108dp"
+                    android:text="aqi __"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/weather_iv"
+                    app:layout_constraintTop_toTopOf="@+id/weather_iv"
+                    tools:text="aqi 121" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/flag_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather_card">
+
+            <ImageView
+                android:id="@+id/country_flag_iv"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:padding="20dp"
+                android:transitionName="flagOnScreen2"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/country_name_tv"
+            style="@style/titleText"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{viewModel.countryDetails.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flag_card"
+            tools:text="India" />
+
+        <TextView
+            android:id="@+id/capital_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/capital_city"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/capital_tv" />
+
+        <TextView
+            android:id="@+id/capital_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.capital}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/country_name_tv"
+            tools:text="Delhi" />
+
+        <TextView
+            android:id="@+id/region_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/region"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/region_tv" />
+
+        <TextView
+            android:id="@+id/region_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.countryDetails.region}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/capital_tv"
+            tools:text="Asia"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/calling_codes_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Calling codes"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/calling_codes_tv" />
+
+        <TextView
+            android:id="@+id/calling_codes_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.callingCodes}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/time_zone_tv"
+            tools:text="+91" />
+
+        <TextView
+            android:id="@+id/time_zone_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/time_zone"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/time_zone_tv" />
+
+        <TextView
+            android:id="@+id/time_zone_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.timezones}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/latitude_longitude_tv"
+            tools:text="UTC +8.00" />
+
+        <TextView
+            android:id="@+id/independent_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/independent"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/independent_tv" />
+
+        <TextView
+            android:id="@+id/independent_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.countryDetails.independent}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/population_tv"
+            tools:text="Yes" />
+
+        <TextView
+            android:id="@+id/population_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/population"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/population_tv" />
+
+        <TextView
+            android:id="@+id/population_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/population_count(viewModel.countryDetails.population)}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/languages_tv"
+            tools:text="1234"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/latitude_longitude_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/latitude_longitude"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/latitude_longitude_tv" />
+
+        <TextView
+            android:id="@+id/latitude_longitude_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.latitudeLongitude}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/region_tv"
+            tools:text="1234" />
+
+        <TextView
+            android:id="@+id/currencies_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/currencies"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/currencies_tv" />
+
+        <TextView
+            android:id="@+id/currencies_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.currencies}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/calling_codes_tv"
+            tools:text="Rupee" />
+
+        <TextView
+            android:id="@+id/languages_title_tv"
+            style="@style/titleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/languages"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="@+id/languages_tv" />
+
+        <TextView
+            android:id="@+id/languages_tv"
+            style="@style/valueText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            android:text="@{viewModel.countryDetails.languages}"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/currencies_tv"
+            tools:text="Tamil" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="190dp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="10dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="10dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>
